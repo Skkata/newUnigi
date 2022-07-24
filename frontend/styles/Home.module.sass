@@ -1,9 +1,8 @@
-@mport './_mixins.sass'
+@import './_mixins'
 
-@include mobile
-  body
-    background-color: red
+@include mobile()
+    .header
+      background-color: red
 
-@include tablet
-  .block
-    background-color: green
+
+@include tablet()
