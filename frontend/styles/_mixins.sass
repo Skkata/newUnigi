@@ -1,15 +1,52 @@
+// Mixin flex column
+
+=flexCol()
+    display: flex
+    flex-direction: column
+
+// Mixin flex row
+
+=flexRow()
+    display: flex
+    flex-direction: row
+
+// Mixin flex center
+
+=flexCenter()
+    display: flex
+    justify-content: center
+    align-items: center
+
 
 // Mixin for mobile version
 
-@mixin mobile()
+=mobile()
     @media screen and (max-width: 426px)
         @content
 
 // Mixin for tablet version
 
-@mixin tablet()
+=tablet()
     @media screen and (max-width: 769px)
         @content
     
+// mxin dotted
 
-    
+=dotted()
+    content: ''
+    width: 7px
+    height: 7px
+    position: absolute
+    border-radius: 50%
+    background-color: #388af3
+    transition: 0.3s
+
+// cursor arrow
+
+=cursorArrow()
+    cursor: url('../assets/icons/icons8-курсор.svg') -20 -15, default
+
+// cursor hand
+
+=cursorHand()
+    cursor: url('../assets/icons/icons8-курсор-рука.svg') -20 -15, default
