@@ -1,0 +1,114 @@
+@import '../../styles/_mixins'
+
+$hoverColorText: #388af3
+
+.header
+    +flexRow()
+    justify-content: space-between
+    align-items: center
+    width: 100vw
+    height: 70px
+    padding-left: 50px
+    padding-right: 50px
+    background-color: white
+    user-select: none
+    position: fixed
+    .logotype
+        +flexCenter()
+        width: calc( 100px - 10px )
+        font-size: 26px
+        font-weight: 900
+        outline: none
+        user-select: none
+    .menu
+        +flexRow()
+        align-items: center
+        width: auto
+        height: auto
+        font-weight: 700
+        letter-spacing: 2px
+        font-size: clamp(1vw, 100%, 1.5vw)
+        .menuEl
+            +flexCenter()
+            margin-left: 3vw
+            margin-right: 3vw
+            transition: 0.3s
+        .menuEl::before
+            +dotted()
+            margin-top: 40px
+            transform: scale(0)
+        .menuEl:hover::before
+            transform: scale(1)
+        a:hover
+            color: $hoverColorText
+        #active
+            color: $hoverColorText
+        #active::before
+            +dotted()
+            transform: scale(1)
+        .dropMenu
+            +flexCol()  
+            align-items: center
+            justify-content: center
+            width: 100vw
+            height: 130px
+            left: 0
+            margin-top: 195px
+            transition: .5s
+            position: absolute
+            background-color: #fff
+            box-shadow: 0px 27px 60px rgb(0 0 0 / 6%)
+            overflow: hidden
+            .dropMenuList
+                +flexCol()
+                align-items: flex-start
+                width: auto
+                height: auto
+                .listEl
+                    transition: 0.3s
+                    margin-bottom: 15px
+                    a
+                        transition: 0.3s
+                        font-size: clamp(0.6rem, 1vw, 1rem)
+                    a::before
+                        +dotted()
+                        margin-left: -17px
+                        margin-top: 5.5px
+                        opacity: 0
+                    a:hover::before
+                        transform: scale(1)
+                        opacity: 1
+                .listEl:hover
+                    transform: translateX(5px)
+        .hideDropMenu
+            margin-top: -1px
+            opacity: 0
+            height: 0px
+    .langs
+        +flexRow()
+        width: auto
+        height: auto
+        text-transform: uppercase
+        font-weight: 800
+        font-size: 15px
+        .langBtn
+            margin-left: 5px
+            margin-right: 8px
+            +cursorHand()
+            color: #979bad
+        .langBtn:hover
+            color: $hoverColorText
+        .langBtn:hover::before
+            +dotted()
+            width: 5px
+            height: 5px
+            margin-top: 20px
+            margin-left: 7px
+        #activeLang
+            color: $hoverColorText
+        #activeLang::before
+            +dotted()
+            width: 5px
+            height: 5px
+            margin-top: 20px
+            margin-left: 7px

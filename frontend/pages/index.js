@@ -1,22 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.sass'
-import img from '../public/img/Development-Hack.svg'
-import imgTeam from '../public/img/Development-Team-coding.svg'
-import img_book from '../public/icons/book.svg'
-import img_GiftBox from '../public/icons/gift-box.svg'
-import img_SaveMoney from '../public/icons/save-money.svg'
-import img_support from '../public/icons/support.svg'
-import img_TeaCup from '../public/icons/tea-cup.svg'
-import img_WorkStation from '../public/icons/work-station.svg'
-import img_WorkingTime from '../public/icons/working-time.svg'
-import img_subway from '../public/icons/subway.svg'
-import telegram from '../public/icons/telegram.svg'
-import discord from '../public/icons/discord.svg'
-
+import img from '../assets/img/Development-Hack.svg'
+import imgTeam from '../assets/img/Development-Team-coding.svg'
 
 export default function Home() {
   return (
+
     <div>
       <Head>
         <title>Alpha</title>
@@ -167,5 +157,7 @@ export default function Home() {
 
 
     </div>
+ 
+
   )
 }
