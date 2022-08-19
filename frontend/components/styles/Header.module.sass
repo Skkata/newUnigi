@@ -1,18 +1,20 @@
 @import '../../styles/_mixins'
 
 $hoverColorText: #388af3
+$hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px #7faeec, 0 0 30px #388af3cc, 0 0 40px #84b4f3, 0 0 55px #388af3, 0 0 75px #82b6f8
 
 .header
     +flexRow()
     justify-content: space-between
     align-items: center
     width: 100vw
-    height: 70px
+    height: 85px
     padding-left: 50px
     padding-right: 50px
     background-color: white
     user-select: none
     position: fixed
+    z-index: 1000
     .logotype
         +flexCenter()
         width: calc( 100px - 10px )
@@ -20,6 +22,8 @@ $hoverColorText: #388af3
         font-weight: 900
         outline: none
         user-select: none
+        transition: .9s
+        opacity: 1
     .menu
         +flexRow()
         align-items: center
@@ -39,76 +43,271 @@ $hoverColorText: #388af3
             transform: scale(0)
         .menuEl:hover::before
             transform: scale(1)
+        a
+            transition: .3s
         a:hover
             color: $hoverColorText
-        #active
+            text-shadow: $hoverTextShadow
+
+        #activeCaptionDropMenu
             color: $hoverColorText
-        #active::before
+            text-shadow: $hoverTextShadow
+        #activeCaptionDropMenu::before
             +dotted()
             transform: scale(1)
         .dropMenu
-            +flexCol()  
+            +flexRow()  
             align-items: center
             justify-content: center
             width: 100vw
-            height: 130px
+            height: 150px
             left: 0
-            margin-top: 195px
+            margin-top: 215px
             transition: .5s
             position: absolute
             background-color: #fff
             box-shadow: 0px 27px 60px rgb(0 0 0 / 6%)
             overflow: hidden
+            .iconsDropMenu
+                margin-left: -230px
+                margin-right: 150px
+                transition: .6s 
+                transform: scale(1)
+            .iconsHide
+                transform: scale(0)
             .dropMenuList
                 +flexCol()
                 align-items: flex-start
                 width: auto
                 height: auto
                 .listEl
-                    transition: 0.3s
-                    margin-bottom: 15px
-                    a
-                        transition: 0.3s
-                        font-size: clamp(0.6rem, 1vw, 1rem)
-                    a::before
-                        +dotted()
-                        margin-left: -17px
-                        margin-top: 5.5px
-                        opacity: 0
-                    a:hover::before
-                        transform: scale(1)
-                        opacity: 1
+                    transition: transform 0.5s
+                    transition-timing-function: cubic-bezier(0.39, 0.58, 0.57, 1)
+                    margin-bottom: 10px
+                    margin-top: 10px
                 .listEl:hover
-                    transform: translateX(5px)
+                    transform: translateX(17px)
+                a
+                    font-size: clamp(0.5rem, 1vw, 1rem)
+                a::before
+                    +dotted()
+                    margin-left: -17px
+                    margin-top: 5.5px
+                    opacity: 0
+                a:hover
+                    text-shadow: none
+                a:hover::before
+                    transform: scale(1)
+                    opacity: 1
         .hideDropMenu
-            margin-top: -1px
-            opacity: 0
+            transform: translateY(-60px)
             height: 0px
-    .langs
-        +flexRow()
+            opacity: 0
+    .rightInfo
+        display: flex
+        flex-direction: row
+        align-items: center
         width: auto
-        height: auto
-        text-transform: uppercase
-        font-weight: 800
-        font-size: 15px
-        .langBtn
-            margin-left: 5px
-            margin-right: 8px
-            +cursorHand()
-            color: #979bad
-        .langBtn:hover
-            color: $hoverColorText
-        .langBtn:hover::before
-            +dotted()
-            width: 5px
+        height: 100%
+        overflow: hidden
+        .langs
+            +flexRow()
+            width: auto
+            height: auto
+            margin-right: 30px
+            font-weight: 800
+            font-size: 15px
+            text-transform: uppercase
+            .langBtn
+                margin-left: 5px
+                margin-right: 8px
+                +cursorHand()
+                color: #979bad
+            .langBtn:hover
+                color: $hoverColorText
+            .langBtn:hover::before
+                +dotted()
+                width: 5px
+                height: 5px
+                margin-top: 20px
+                margin-left: 7px
+            #activeLang
+                color: $hoverColorText
+            #activeLang::before
+                +dotted()
+                width: 5px
+                height: 5px
+                margin-top: 20px
+                margin-left: 7px
+        .btnContact
+            +flexCenter()
+            width: 150px
+            height: 30px
+            margin-right: -120px
+            transition: .6s
+            border-radius: 6px
+            cursor: pointer
+            @keyframes animIcon
+                0%
+                    transform: translateX(0px)
+                15%
+                    transform: translateX(-1px)
+                30%
+                    transform: translateX(-2px)
+                45%
+                    transform: translateX(-3px)
+                60%
+                    transform: translateX(-3px)
+                75%
+                    transform: translateX(-2px)
+                90%
+                    transform: translateX(-1px)
+                100%
+                    transform: translateX(0px)
+            .btnContactIcon
+                margin-left: -30px
+                margin-top: 5px
+                opacity: 1
+                animation: animIcon 1.3s cubic-bezier(0.39, 0.58, 0.57, 1) infinite
+            .btnContactText
+                transition: .6s
+                transform: translateX(50px)
+                font-weight: 600
+                letter-spacing: 1px
+                text-transform: uppercase
+                color: white
+        .btnContact:hover
+            margin-right: 0px
+            .btnContactIcon
+                opacity: 0
+            .btnContactText
+                color: $hoverColorText
+                transform: translateX(0px)
+.btnBurger
+    display: none
+.mobileMenu
+    display: none
++mobile()
+    .header
+        padding-left: 25px
+        padding-right: 25px
+        .menu
+            display: none
+        .rightInfo
+            .langs
+                margin-right: 70px
+            .btnContact
+                display: none
+    .btnBurger
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        width: 35px
+        height: 25px
+        position: fixed
+        left: 83vw
+        top: 30px
+        z-index: 1002
+        user-select: none
+        span
+            width: 100%
             height: 5px
-            margin-top: 20px
-            margin-left: 7px
-        #activeLang
-            color: $hoverColorText
-        #activeLang::before
-            +dotted()
-            width: 5px
-            height: 5px
-            margin-top: 20px
-            margin-left: 7px
+            border-radius: 10px
+            background-color: $hoverColorText
+            transition: 0.6s
+        .middleLine
+            width: 60%
+    .burgerActive
+        .topLine
+            transform: translateY(11px) rotate(45deg)!important
+            margin-top: -3px
+        .middleLine
+            width: 0%
+        .bottomLine
+            transform: translateY(-11px) rotate(-45deg)!important
+            margin-top: -3px
+    .mobileMenuFon
+        width: 100vw
+        height: 100vh
+        background-color: #fff
+        // background-color: #f5f5f5fc
+        position: fixed
+        z-index: 1001
+        transition: 1s
+        clip-path: circle(100% at 40% 25%)
+        .mobileMenu
+            +flexCol()
+            justify-content: space-evenly
+            align-items: center
+            width: 100%
+            height: 100%
+            .head
+                font-size: 30px
+                font-weight: 900
+                opacity: 1
+                transform: scale(1)
+                transition: .7s .5s
+                user-select: none
+            .menu
+                +flexCol()
+                align-items: center
+                transition: .7s .8s
+                opacity: 1
+                transform: translateY(0px)
+                background: linear-gradient(to right, #388AF3 0%, #71A3E2 100%)
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+                font-weight: 900
+                .menuEl
+                    +flexCenter()
+                    width: 100%
+                    height: 100%
+                    font-size: 27px
+                    margin-bottom: 20px
+                    user-select: none
+            .footer
+                width: 100%
+                height: auto
+                .info
+                    +flexRow()
+                    align-items: center
+                    justify-content: center
+                .telegram
+                    transition: .7s 1s
+                    margin-right: 30px
+                    opacity: 1
+                    animation: animTelegram 2s .5s infinite
+                @keyframes animTelegram 
+                    0%
+                        transform: translateY(5px) translateX(-4px)
+                    50%
+                        transform: translateY(0px) translateX(0px)
+                    100%
+                        transform: translateY(5px) translateX(-4px)
+                .email
+                    transition: .7s 1s
+                    opacity: 1
+        .hideMobileMenu
+            .head
+                transition: .7s .9s
+                opacity: 0
+                transform: scale(0)
+            .menu
+                transition: .7s .5s
+                opacity: 0
+                transform: translateY(-10px)
+            .footer
+                .info
+                    user-select: none
+                    .telegram
+                        transition: .7s .2s
+                        animation: none
+                        opacity: 0
+                        margin-left: -10px
+                    .email
+                        transition: .7s .2s
+                        opacity: 0
+                        margin-left: 30px
+    .hideMobileMenuFon  
+        transition: .7s 1s
+        clip-path: circle(0% at 0% 0%)

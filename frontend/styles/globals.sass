@@ -3,11 +3,14 @@
 @font-face
   font-family: 'Gilroy'
   src: url('../assets/fonts/Gilroy-Light.otf')
+  font-display: swap
 
 html,
 body 
   padding: 0
   margin: 0
+  scroll-behavior: smooth
+  overflow-x: hidden
   +cursorArrow()
 
 a 
@@ -17,9 +20,12 @@ a
 a:hover
   +cursorHand()
 
-* 
+*
   box-sizing: border-box
   font-family: Gilroy
+
+text
+  font-family: monospace
 
 @media (prefers-color-scheme: dark) 
   html 

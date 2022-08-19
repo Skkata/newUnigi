@@ -20,16 +20,20 @@
 
 // Mixin for mobile version
 
-=mobile()
-    @media screen and (max-width: 426px)
+=mobile($max-width: 426px)
+    @media screen and (max-width: $max-width)
         @content
 
 // Mixin for tablet version
 
-=tablet()
-    @media screen and (max-width: 769px)
+=tablet($max-width: 769px)
+    @media screen and (max-width: $max-width)
         @content
     
+=laptop($max-width: 1024px)
+    @media screen and (max-width: $max-width)
+        @content
+
 // mxin dotted
 
 =dotted()

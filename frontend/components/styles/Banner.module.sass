@@ -1,0 +1,64 @@
+@import '../../styles/_mixins'
+    
+.banner
+    +flexCenter()
+    width: 97.5vw
+    height: 100vh 
+    position: relative
+    .caption
+        +flexRow()
+        justify-content: center
+        align-items: center
+        width: 97%
+        height: auto
+        font-size: clamp(1.5rem, 2.5vw, 2.3rem)
+        font-weight: 900
+        color: #343434
+        text-transform: uppercase
+        word-break: normal
+        letter-spacing: 2px
+        user-select: none
+        .text
+            margin-right: 15px
+        .word
+            +flexCol()
+            justify-content: center
+            align-items: flex-start
+            width: clamp(320px, 30vw, 435px)
+            height: 80px
+            padding-left: 3px
+            padding-right: 5px
+            overflow: hidden
+            h1
+                position: absolute
+                margin-top: 0px
+                margin-bottom: 0px
+                transition: .9s
+            h1:nth-child(1)
+                background: #388AF3
+                background: linear-gradient(to right, #388AF3 36%, #F01456 100%)
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+            h1:nth-child(2)
+                background: #F31B1B
+                background: linear-gradient(to right, #F31B1B 23%, #2CF00E 100%)
+                -webkit-background-clip: text
+                -webkit-text-fill-color: transparent
+            .hideWord
+                opacity: 0
+                transform: translateY(-5px)
+    #canvas
+        position: absolute
+        z-index: -1
++laptop()
+    .banner
+        .caption
+            +flexCol()
+            align-items: center
+            text-align: center
+            .text
+                margin-right: 0px
+                margin-bottom: 0px
+            .word
+                align-items: center
+                margin-top: 0px
