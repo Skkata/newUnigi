@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import langReducer from './langSlice';
+import langReducer from './reducers/langSlice.js';
+import menuHeaderReducer from './reducers/HeaderSlice';
+import mainSlice from './reducers/mainSlice.js';
 
 export const store = configureStore({
     reducer: {
-        language: langReducer, 
+        main: mainSlice,
+        language: langReducer,
+        menu: menuHeaderReducer
     }
 })

@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import styles from './styles/Banner.module.sass';
-import { textEN, textRU } from '../assets/text';
 import { useSelector } from "react-redux";
 
 
@@ -13,9 +12,6 @@ export default function Banner() {
 
         if(listWord.current !== null) {
             showWord(listWord.current.childNodes);
-            // requestAnimationFrame((time) => {
-                
-            // })
         }
 
         let ctx = canvas.current.getContext('2d'),

@@ -2,28 +2,24 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Link from 'next/link'
 import Image from 'next/image';
-import localforage from 'localforage';
-import { changeToRu, changeToEn, changeValue } from '../redux/langSlice';
+import anime from 'animejs';
+import { changeToRu, changeToEn, changeValue } from '../redux/reducers/langSlice';
 import styles from './styles/Header.module.sass';
-import { textEN, textRU } from '../assets/text';
 import iconInternetShop from '../assets/icons/internet-shop.svg';
 import iconLending from '../assets/icons/lending.svg';
 import iconWebApp from '../assets/icons/web-app.svg';
 import iconArrowsLeft from '../assets/icons/arrowsLeft.svg';
 import iconTelegram from '../assets/icons/Telegram - Original.svg';
 import iconEmail from '../assets/icons/email.svg';
+import { hideDropMenu, hideIconDropMenu, showDropMenu, showIconDropMenu } from '../redux/reducers/HeaderSlice';
 
 export default function Header() {
     const lang = useSelector(state => state.language.value);
     const dispatch = useDispatch()
-    // const [ text, setText ] = useState(lang === 'en' ? textEN : textRU);
     const text = useSelector(state => state.language.text);
     const btnBurger = useRef();
-    const [ body, setBody ] = useState('');
-    const [ hideDropMenu, setHideDropMenu ] = useState(styles.hideDropMenu)
-    const [ hideIconDropMenu, setHideIconDropMenu ] = useState(styles.iconsHide)
-    const [ activeCaptionDropMenu, setActiveCaptionDropMenu ] = useState('');
-    const [ iconsSrcDropMenu, setIconsSrcDropMenu ] = useState(iconLending);
+    // const [ body, setBody ] = useState('');
+    const body = document.body;
     const [ activeMobileMenu, setActiveMobileMenu ] = useState(styles.hideMobileMenu);
     const [ hideMobileMenuFon, setHideMobileMenuFon ] = useState(styles.hideMobileMenuFon);
     const [ activeBtnLang, setActiveBtnLang ] = useState({
@@ -31,44 +27,6 @@ export default function Header() {
         en: lang === 'en' ? styles.activeLang : ''
     });
     
-    useEffect(() => {
-        
-        setBody(document.body);
-
-    }, [])
-
-
-    // Drop menu
-
-    function showIconsDropMenu(nameIcon) {
-        setHideIconDropMenu('');
-
-        switch (nameIcon) {
-            case 'landing':
-                setIconsSrcDropMenu(iconLending);
-                break;
-            case 'internet-shop':
-                setIconsSrcDropMenu(iconInternetShop);
-                break;
-            case 'web-app':
-                setIconsSrcDropMenu(iconWebApp);
-                break;
-        }
-    }
-    
-    function showDropMenu() {
-        setHideDropMenu('');
-        setActiveCaptionDropMenu(styles.activeCaptionDropMenu)
-    };
-
-    function closeDropMenu() {
-        setHideDropMenu(styles.hideDropMenu);
-        setActiveCaptionDropMenu('');
-    };
-
-    function hideIconsDropMenu() {
-        setHideIconDropMenu(styles.iconsHide);
-    }
 
     // Mobile
 
@@ -139,9 +97,20 @@ export default function Header() {
                     return (
                         <div 
                             className={ styles.menuEl }
-                            id={ activeCaptionDropMenu }
+                            id={ styles.captionDropMenu }
                             key={ index }
-                            onMouseOver={ showDropMenu }
+                            onMouseOver={ () => { 
+                                dispatch( 
+                                    showDropMenu(
+                                        { 
+                                            parent: `.${ styles.dropMenu }`, 
+                                            text: `.${ styles.listEl }`,
+                                            caption: `${ styles.captionDropMenu }`,
+                                            styleActiveCaption: `${styles.activeCaptionDropMenu}`
+                                        }
+                                    )
+                                ) 
+                            }}
                             onClick={ () => closeMobileMenu(true) }
                         >
                             <Link href={ value.link || '#' } >
@@ -156,6 +125,18 @@ export default function Header() {
                         className={ styles.menuEl }
                         key={ index }
                         onClick={ () => closeMobileMenu(true) }
+                        onMouseOver={ () => {
+                            dispatch( 
+                                hideDropMenu(
+                                    { 
+                                        parent: `.${ styles.dropMenu }`, 
+                                        text: `.${ styles.listEl }`,
+                                        caption: `${ styles.captionDropMenu }`,
+                                        styleActiveCaption: `${styles.activeCaptionDropMenu}`
+                                    }
+                                )
+                            )
+                        } }
                     >
                         <Link href={ value.link || '#' } >
                             { value.text }
@@ -167,27 +148,70 @@ export default function Header() {
 
     }
     
-    function DropMenuList(props) {
-        const data = props.data.dropMenu;
+    function ListEl(props) {
+        const data = props.data;
         
-            return data.map(( value, index ) => {
-                return (
-                    <div 
-                        className={ styles.listEl } 
-                        key={ index }
-                        onMouseOver={() => { showIconsDropMenu(value.id) }}
-                    >
-                        <Link 
-                            href={ value.link || '#' }
-                        >
-                            { value.text }
-                        </Link>
-                    </div>
-                )
-            });
+        return data.map((value, index) => {
 
-    }
+            return(
+                <div 
+                    className={styles.listEl}
+                    key={ index }
+                    onMouseOver={() => {
+                        dispatch(
+                            
+                            showIconDropMenu({
+                                nameIcon: value.id
+                            })
+                        )
+                    }}
+                    onMouseOut={() => {
+
+                        dispatch(
+
+                            hideIconDropMenu({
+                                nameIcon: value.id
+                            })
+
+                        )
+                    }}
+                >
+                    <Link
+                        href={ value.link }
+                    >
+                            {value.text}
+                    </Link>
+                </div>
+            )
+
+        })
     
+    }
+
+    function IconsDropMenu(props) {
+        const data = props.data;
+
+        let nameIcon = ['landing', 'internet-shop', 'web-app'];
+        return data.map((value, index) => {
+            return(
+                <div
+                    key={index}
+                    id={nameIcon[index]}
+                    style={{
+                        opacity: 0
+                    }}      
+                >
+                    <Image 
+                        src={value}
+                        width={120}
+                        height={120}
+                    />
+                </div>
+            )
+
+        });
+    }
+
     return(
         <>
             <header className={ styles.header }>
@@ -198,29 +222,28 @@ export default function Header() {
                     </Link>
                 </div>
 
-                <div className={ styles.menu }>
-                    
-                    <MenuEl data={ text.header.menu } />
+                <div className={styles.menu}>
+                    <MenuEl data={text.header.menu}/>
                     <div 
-                        className={ styles.dropMenu + ' ' + hideDropMenu } 
-                        onMouseOver={ showDropMenu }
-                        onMouseOut={ closeDropMenu }
-                    >  
-                        <div 
-                            className={ styles.iconsDropMenu + ' ' + hideIconDropMenu }
-                        >    
-                            <Image 
-                                src={ iconsSrcDropMenu }
-                                className={ styles.dropMenuIcon }
-                                width={ 150 }
-                                height={ 150 }
-                            />
+                        className={ styles.dropMenu + ' ' + styles.hideDropMenu}
+                        onMouseLeave={ () => { 
+                            dispatch( 
+                                hideDropMenu(
+                                    { 
+                                        parent: `.${ styles.dropMenu }`, 
+                                        text: `.${ styles.listEl }`,
+                                        caption: `${ styles.captionDropMenu }`,
+                                        styleActiveCaption: `${styles.activeCaptionDropMenu}`
+                                    }
+                                ) 
+                            ) 
+                        }}
+                    >
+                        <div className={styles.iconsDropMenu}>
+                            <IconsDropMenu data={ [iconLending, iconInternetShop, iconWebApp] }/>
                         </div>
-                        <div 
-                            className={ styles.dropMenuList }
-                            onMouseOut={ hideIconsDropMenu }
-                        >
-                            <DropMenuList data={ text.header.menu[1] }/>
+                        <div className={styles.dropMenuList}>
+                            <ListEl data={text.header.menu[1].dropMenu} />
                         </div>
                     </div>
                 </div>

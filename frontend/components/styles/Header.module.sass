@@ -48,7 +48,8 @@ $hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px 
         a:hover
             color: $hoverColorText
             text-shadow: $hoverTextShadow
-
+        #captionDropMenu
+            color: black
         #activeCaptionDropMenu
             color: $hoverColorText
             text-shadow: $hoverTextShadow
@@ -69,12 +70,18 @@ $hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px 
             box-shadow: 0px 27px 60px rgb(0 0 0 / 6%)
             overflow: hidden
             .iconsDropMenu
-                margin-left: -230px
-                margin-right: 150px
+                +flexRow()
+                margin-left: -190px
+                margin-right: 50px
                 transition: .6s 
-                transform: scale(1)
-            .iconsHide
-                transform: scale(0)
+                div:nth-child(1)
+                    transform: scale(0)
+                div:nth-child(2)
+                    position: absolute
+                    transform: scale(0)
+                div:nth-child(3)
+                    position: absolute
+                    transform: scale(0)
             .dropMenuList
                 +flexCol()
                 align-items: flex-start

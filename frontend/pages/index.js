@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import anime from 'animejs'
 import styles from '../styles/Home.module.sass'
 import Banner from '../components/Banner'
 import svgTech from '../assets/img/tech.svg';
@@ -12,10 +14,13 @@ import iconLanding from '../assets/icons/lending.svg';
 import iconInternetShop from '../assets/icons/internet-shop.svg';
 import iconWeb from '../assets/icons/web-app.svg';
 import Link from 'next/link'
+import { animationHoverService, animationNoHoverService, hideServiceForDesktop, hideServiceForMobile, showServiceForDesktop, showServiceForMobile } from '../redux/reducers/mainSlice'
 
 export default function Home() {
+  const text = useSelector(state => state.language.text);
   const technology = useRef();
-  const [ srcTech, setSrcTechRobot ] = useState('/');
+  const dispatch = useDispatch();
+  const service = useRef('');
   const [ hideCaption, setHideCaption ] = useState(styles.hideCaption);
   const sizeIconsTech = {
     width: 70,
@@ -27,20 +32,111 @@ export default function Home() {
   }
   
   useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
+    
+    // animation card services
 
+    const observer = new IntersectionObserver(entries => {
+  
       entries.forEach(entry => {
 
-          if(entry.isIntersecting) {
+          // animation card service for mobile version
+
+          if(window.innerWidth < 428) {
+
+
+            if(!entry.isIntersecting) {
+                dispatch(
+                  hideServiceForMobile({
+                    idService: entry.target.id
+                  })
+                )
+                return;
+            }
+
+            dispatch(
+              showServiceForMobile({
+                  idService: entry.target.id
+              })
+            )
             
+          }else {
+
+            // animation card service for desktop
+
+            if(!entry.isIntersecting) {
+
+              dispatch(
+                hideServiceForDesktop({
+                  idService: ['#landings', '#internet-shops', '#web-apps']
+                })
+              )
+              return;
+            }
+
+            dispatch(
+              
+              showServiceForDesktop({
+                  idService: ['#landings', '#internet-shops', '#web-apps']
+              })
+            );
+
           }
+
       });
 
     });
 
-    observer.observe(technology.current);
+    observer.observe(document.getElementById('landings'));
+    observer.observe(document.getElementById('internet-shops'));
+    observer.observe(document.getElementById('web-apps'));
+
+
+    // 
   }, [])
 
+  function ListService(props) {
+    const data = props.data;
+
+    return data.map((value, index) => {
+
+      let icon;
+      switch (value.id) {
+        case 'landing':
+          icon = iconLanding;
+          break;
+        case 'internet-shop':
+          icon = iconInternetShop;
+          break;
+        case 'web-app':
+          icon = iconWeb;
+          break;
+      }
+      return(
+        <Link
+            href={value.href}
+            key={index}
+          >
+                <div 
+                  className={styles.serviceEl}
+                  id={value.id + 's'}
+                >
+                  <div className={styles.leftService}>
+                    <h3 className={styles.nameService}>{value.text}</h3>
+                    <Image 
+                      src={icon}
+                      width={sizeIconsService.width}
+                      height={sizeIconsService.height}
+                    />
+                  </div>
+                  <p className={styles.descService}>
+                    {value.description}
+                  </p>
+                </div>
+              </Link>
+      )
+
+    });
+  }
 
   return(
     <>
@@ -48,86 +144,25 @@ export default function Home() {
       <div className={styles.services}>
           <div className={styles.servicesText}>
               <h3 className={styles.servicesCaption}>
-                Что мы делаем
+                {text.services.caption}
               </h3>
               <p className={styles.servicesDesc}>
-                Веб-разроботка: лендинг, интернет-магазин, веб-приложение
+                {text.services.description}
               </p>
           </div>
           <div className={styles.listServices}>
-              <Link
-                href={'/service/landing'}
-              >
-                <div className={styles.serviceEl}>
-                  <div className={styles.leftService}>
-                    <h3 className={styles.nameService}>Лендинг</h3>
-                    <Image 
-                      src={iconLanding}
-                      width={sizeIconsService.width}
-                      height={sizeIconsService.height}
-                    />
-                  </div>
-                  <p className={styles.descService}>
-                    Создадим одностраничный сайт, 
-                    который презентует ваш продукт клиентам.
-                    Не требует разработки сложной архитектуры сайта.
-                  </p>
-                </div>
-              </Link>
-
-              <Link
-                href={'/service/internet-shop'}
-              >
-                <div className={styles.serviceEl}>
-                  <div className={styles.leftService}>
-                    <h3 className={styles.nameService}>Интернет-Магазин</h3>
-                    <Image 
-                      src={iconInternetShop}
-                      width={sizeIconsService.width}
-                      height={sizeIconsService.height}
-                    />
-                  </div>
-                  <p className={styles.descService}>
-                    Сделаем форму электронной торговли,
-                    которая позволит вашим клиентам покупать
-                    товары и услуги с помощью веб-браузера
-                  </p>
-                </div>
-              </Link>
-
-              <Link
-                href={'/service/web-app'}
-              >
-                <div className={styles.serviceEl}>
-                  <div className={styles.leftService}>
-                    <h3 className={styles.nameService}>Веб-Приложение</h3>
-                    <Image 
-                      src={iconWeb}
-                      width={sizeIconsService.width}
-                      height={sizeIconsService.height}
-                    />
-                  </div>
-                  <p className={styles.descService}>
-                    Разработаем технически сложное приложение, 
-                    которое поможет в продуктивности вашему бизнесу.
-                  </p>
-                </div>
-              </Link>
+            <ListService data={text.services.listService}/>
           </div>
       </div>
       <div 
         className={ styles.information }
       >
           <div className={styles.text}>  
-            <h3 
-              className={ styles.caption }
-            >
-              ближе к технологиям
+            <h3 className={ styles.caption }>
+              {text.information.caption}
             </h3>
-            <p
-              className={styles.description}
-            >
-                Справочник по технологиям, которые автомизирует и помогает бизнесу.
+            <p className={styles.description}>
+              {text.information.description}
             </p>
           </div>
           <div
@@ -137,17 +172,16 @@ export default function Home() {
             <div
               className={ styles.listTech }
             >
+              
               <div className={styles.column}>
                 
                 <div className={ styles.elTech }>
                   <div className={ styles.textTech }>
                     <h3 className={ styles.captionTech }>
-                      Веб-сайты
+                      {text.information.technology[0].caption}        
                     </h3>
                     <p className={ styles.descTech }>
-                        Состоит из веб-страниц, объединенных друг с другом в единый ресурс. 
-                        Имеет простую архитектуру на основе HTML-кода. 
-                        Служат в качестве платформы для предоставления контента для посетителей.
+                        {text.information.technology[0].description}
                     </p>
                   </div>
                   <div className={styles.iconTech}>
@@ -163,13 +197,10 @@ export default function Home() {
 
                   <div className={ styles.textTech }>
                     <h3 className={ styles.captionTech }>
-                      Веб-приложение
+                      {text.information.technology[1].caption}
                     </h3>
                     <p className={ styles.descTech }>
-                      Интерактивные компьютерные приложения, 
-                      разработанные для сети интернет, 
-                      позволяющие пользователям вводить, 
-                      получать и манипулировать данными с помощью взаимодействия.
+                      {text.information.technology[1].description}
                     </p>
                   </div>
                   <div className={styles.iconTech}>
@@ -188,13 +219,10 @@ export default function Home() {
                 <div className={ styles.elTech }>
                   <div className={ styles.textTech }>
                     <h3 className={ styles.captionTech }>
-                      Мобильное приложение
+                      {text.information.technology[2].caption}
                     </h3>
                     <p className={ styles.descTech }>
-                      Это программный пакет, 
-                      функционал и дизайн которого «заточен» под возможности мобильных платформ.
-                      У мобильных приложений бывает разное назначение. 
-                      Самые распространенные варианты такие: приложения интернет-магазинов, развлечения, трекеры, различные сервисы и помощники.
+                      {text.information.technology[2].description}
                     </p>
                   </div>
                   <div className={styles.iconTech}>
@@ -209,12 +237,10 @@ export default function Home() {
                 <div className={ styles.elTech }>
                   <div className={ styles.textTech }>
                     <h3 className={ styles.captionTech }>
-                      Десктоп приложение
+                      {text.information.technology[3].caption}
                     </h3>
                     <p className={ styles.descTech }>
-                      Программа, которая устанавливается на компьютер 
-                      пользователя и работает под управлением операционной системы.
-                      Такие приложения высокопроизводительные, могут работать напрямую с принтерами, сканерами, факсами и прочей техникой.
+                      {text.information.technology[3].description}
                     </p>
                   </div>
                   <div className={styles.iconTech}>

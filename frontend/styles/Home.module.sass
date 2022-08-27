@@ -5,12 +5,12 @@
   align-items: center
   width: 100vw
   height: auto
-  background-color: #388af3
-  background: linear-gradient(270deg, #388AF3 21.04%, #A483E2 88.77%)
+  // background-color: #388af3
+  // background: linear-gradient(270deg, #388AF3 21.04%, #A483E2 88.77%)
   .servicesText
     width: 80%
     height: auto
-    color: white
+    color: black
     .servicesCaption
       font-size: clamp(1.6rem, 3vw, 2.5rem)
       font-weight: 900
@@ -23,27 +23,46 @@
     +flexRow()
     justify-content: space-evenly
     flex-wrap: wrap
-    width: 80%
+    width: 100%
     height: auto
     margin-top: 20px
     padding-bottom: 20px
     .serviceEl
-      width: 270px
+      width: 280px
       height: auto
       border-radius: 15px
-      background-color: white
       border: 2px solid #e6e6e6
       padding: 10px
       margin-bottom: 10px
+      color: black
+      background: hsla(0, 71%, 99%, 1)
+      background: linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
+      background: -moz-linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
+      background: -webkit-linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
       .leftService
         +flexCol()
         align-items: center
-        .nameService
+        h3
+          color: white
+
       .descService
         text-align: center
         line-height: clamp(1.3rem, 2vw, 1.5rem)
+    // .serviceEl:after
+    //   position: absolute
+    //   content: ""
+    //   top: 0
+    //   left: 0
+    //   right: 0
+    //   height: 100%
+    //   width: 100%
+    //   background: linear-gradient(90deg, #00CAB1, #7B00FF)
+    //   background-size: 200% 200%
+    //   transform: scale(0.95)
+    //   filter: blur(2vw)
+    //   z-index: -1
     .serviceEl:hover
-      cursor: pointer   
+        +cursorHand()
 
       
   
@@ -139,7 +158,12 @@
             margin-bottom: 0px
 
 +mobile()
-  .technology
-    .listTech
-      .column
-        flex-direction: column !important
+  .information
+    .technology
+      width: 70%
+      .listTech
+        .column
+          flex-direction: column !important
+          .elTech
+            .captionTech
+              line-height: 2rem !important

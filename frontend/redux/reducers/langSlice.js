@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import localforage from 'localforage';
-import { textEN, textRU } from '../assets/text';
+import { textEN, textRU } from '../../assets/text';
+var lang = 'ru';
 
-const lang = 'ru';
+if(typeof window !== 'undefined') {
+    lang = window.localStorage.getItem('lang');
+}
+
 const langSlice = createSlice({
     name: 'language',
     initialState: {
@@ -11,11 +14,11 @@ const langSlice = createSlice({
     },
     reducers: {
         changeToRu: state => {
-            localforage.setItem('lang', 'ru');
+            window.localStorage.setItem('lang', 'ru');
             state.text = textRU;
         },
         changeToEn: state => {
-            localforage.setItem('lang', 'en');
+            window.localStorage.setItem('lang', 'en');
             state.text = textEN;
         },
         changeValue: (state, action) => {
@@ -23,6 +26,7 @@ const langSlice = createSlice({
         }
     }
 });
+
 
 export const { changeToRu, changeToEn, changeValue } = langSlice.actions;
 export default langSlice.reducer;

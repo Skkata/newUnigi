@@ -1,7 +1,9 @@
+import styles from './styles/Footer.module.sass';
+
 export default function Footer() {
     return(
-        <div>
-            Footera
+        <div className={styles.footers}>
+            
         </div>
     )
 }
