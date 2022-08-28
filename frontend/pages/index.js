@@ -42,15 +42,15 @@ export default function Home() {
           // animation card service for mobile version
 
           if(window.innerWidth < 428) {
-
-
+            
             if(!entry.isIntersecting) {
-                dispatch(
-                  hideServiceForMobile({
-                    idService: entry.target.id
-                  })
-                )
-                return;
+
+              dispatch(
+                hideServiceForMobile({
+                  idService: entry.target.id
+                })
+              )
+              return;
             }
 
             dispatch(
@@ -74,12 +74,13 @@ export default function Home() {
             }
 
             dispatch(
-              
+                
               showServiceForDesktop({
                   idService: ['#landings', '#internet-shops', '#web-apps']
               })
+            
             );
-
+            
           }
 
       });

@@ -9,21 +9,29 @@ const mainSlice = createSlice({
     reducers: {
         showServiceForMobile: (state, action) => {
             const { idService } = action.payload;
-            anime({
-                targets: `#${idService}`,
-                translateX: 0,
-                opacity: 1,
-                duration: 2500
+            requestAnimationFrame(time => {
+
+                anime({
+                    targets: `#${idService}`,
+                    translateX: 0,
+                    opacity: 1,
+                    duration: 2500
+                });
+                
             })
         },
         hideServiceForMobile: (state, action) => {
             const { idService } = action.payload;
-            anime({
-                targets: `#${idService}`,
-                translateX: -320,
-                opacity: 0,
-                duration: 2500
-            })
+            requestAnimationFrame(time => {
+                
+                anime({
+                    targets: `#${idService}`,
+                    translateX: -250,
+                    opacity: 0,
+                    duration: 2500
+                })
+
+            });
         },
         showServiceForDesktop: (state, action) => {
             const { idService } = action.payload;
@@ -43,7 +51,7 @@ const mainSlice = createSlice({
             anime({
                 targets: idService,
                 translateY: -50,
-                rotateX: -40,
+                rotateX: -25,
                 opacity: 0,
                 duration: 2500
             })

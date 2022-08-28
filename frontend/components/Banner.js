@@ -24,7 +24,7 @@ export default function Banner() {
             particleRadius: w < 429 ? 3 : 4,
             particleCount: 30,
             particleMaxVelocity: 0.5,
-            lineLength: w < 429 ? 74 : 170,
+            lineLength: w < 429 ? 100 : 170,
             particleLife: 10
         }
 

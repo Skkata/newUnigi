@@ -96,6 +96,39 @@ export const textRU = {
             }
 
         ]
+    },
+    footer: {
+        menuService: {
+            caption: 'Услуги',
+            listService: [
+                { 
+                    id: 'landing',
+                    href: '/service/landinig', 
+                    text: 'Лендинг', 
+                },
+                { 
+                    id: 'internet-shop',
+                    href: '/service/internet-shop', 
+                    text: 'Интернет-Магазин', 
+                },
+                { 
+                    id: 'web-app',
+                    href: '/service/web-app', 
+                    text: 'Веб-Приложение', 
+                },
+    
+            ]
+        },
+        contacts: {
+            caption: 'Контакты',
+            email: {
+                href: '',
+                text: 'super@mail.com'
+            },
+            telegram: {
+                href: ''
+            }
+        }
     }
 };
 
@@ -198,5 +231,33 @@ export const textEN = {
             }
 
         ]
+    },
+    footer: {
+        menuService: {
+            caption: 'Service',
+            listService: [
+                { 
+                    id: 'landing',
+                    href: '/service/landinig', 
+                    text: 'Landing', 
+                },
+                { 
+                    id: 'internet-shop',
+                    href: '/service/internet-shop', 
+                    text: 'Internet-shop', 
+                },
+                { 
+                    id: 'web-app',
+                    href: '/service/web-app', 
+                    text: 'Web-app', 
+                },
+    
+            ]
+        },
+        contacts: {
+            caption: 'Contacts',
+            email: '',
+            telegram: ''
+        }
     }
 };

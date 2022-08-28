@@ -1,5 +1,43 @@
 @import '../../styles/_mixins'
 
 .footer
+    +flexRow()
+    justify-content: space-evenly
     width: 100vw
-    height: 400px
+    height: auto
+    margin-top: 50px
+    padding-right: 10%
+    padding-left: 10%
+    padding: 40px
+    background: linear-gradient(93.29deg, rgb(56, 138, 243) 21.04%, rgb(164, 131, 226) 88.77%)
+    color: white
+    h3
+        font-size: 1.6rem
+        margin-top: 10px
+    .logotype
+        font-size: 2.5rem
+        margin-top: 8px
+    .menuService
+        +flexCol()
+        .menuEl
+            +flexCol()
+            a
+                margin-bottom: 10px
+                font-size: 1.1rem
+                transition: .4s
+            a:hover
+                color: black
+                transform: translateX(10px)
+    .contacts
+        +flexCol()
+        .listContacts
+            +flexRow()
+            align-items: center
+        a
+            margin-right: 70px
+        a
+            color: black
+            font-weight: 900
++mobile()
+    .footer
+        +flexCol()
