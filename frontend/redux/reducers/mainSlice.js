@@ -9,29 +9,24 @@ const mainSlice = createSlice({
     reducers: {
         showServiceForMobile: (state, action) => {
             const { idService } = action.payload;
-            requestAnimationFrame(time => {
 
-                anime({
-                    targets: `#${idService}`,
-                    translateX: 0,
-                    opacity: 1,
-                    duration: 2500
-                });
-                
-            })
+            anime({
+                targets: `#${idService}`,
+                translateX: 0,
+                opacity: 1,
+                duration: 2500
+            });
+
         },
         hideServiceForMobile: (state, action) => {
             const { idService } = action.payload;
-            requestAnimationFrame(time => {
                 
-                anime({
-                    targets: `#${idService}`,
-                    translateX: -250,
-                    opacity: 0,
-                    duration: 2500
-                })
-
-            });
+            anime({
+                targets: `#${idService}`,
+                translateX: -250,
+                opacity: 0,
+                duration: 2500
+            })
         },
         showServiceForDesktop: (state, action) => {
             const { idService } = action.payload;

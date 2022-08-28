@@ -122,11 +122,11 @@ export const textRU = {
         contacts: {
             caption: 'Контакты',
             email: {
-                href: '',
+                href: '/',
                 text: 'super@mail.com'
             },
             telegram: {
-                href: ''
+                href: '/'
             }
         }
     }
@@ -256,8 +256,13 @@ export const textEN = {
         },
         contacts: {
             caption: 'Contacts',
-            email: '',
-            telegram: ''
+            email: {
+                href: '',
+                text: 'super@mail.com'
+            },
+            telegram: {
+                href: ''
+            }
         }
     }
 };

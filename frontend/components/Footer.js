@@ -12,6 +12,7 @@ export default function Footer() {
         const data = props.data;
 
         return data.map((value, index) => {
+            // console.log(value.href);
             return(
                 <Link 
                     href={value.href}
@@ -23,6 +24,7 @@ export default function Footer() {
         })
     }
 
+    console.log(text.footer)
     return(
         <div className={styles.footer}>
             <h1 className={styles.logotype}>UNIGI</h1>
@@ -39,7 +41,7 @@ export default function Footer() {
                     {text.footer.contacts.caption}
                 </h3>
                 <div className={styles.listContacts}>
-                    <Link 
+                    {/* <Link 
                         href={text.footer.contacts.email.href}
                     >
                         {text.footer.contacts.email.text}
@@ -48,11 +50,11 @@ export default function Footer() {
                         href={text.footer.contacts.telegram.href}
                     >
                         <Image 
-                            src={iconTelegram}
+                            src={ iconTelegram }
                             width={40}
                             height={40}
                         />
-                    </Link>
+                    </Link> */}
                 </div>
             </div>
         </div>
