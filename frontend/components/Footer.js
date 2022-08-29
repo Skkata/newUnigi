@@ -24,7 +24,6 @@ export default function Footer() {
         })
     }
 
-    console.log(text.footer)
     return(
         <div className={styles.footer}>
             <h1 className={styles.logotype}>UNIGI</h1>
@@ -42,18 +41,20 @@ export default function Footer() {
                 </h3>
                 <div className={styles.listContacts}>
                     <Link 
-                        href={'/#'}
+                        href={'mailto:' + text.footer.contacts.email.href}
                     >
                         {text.footer.contacts.email.text}
                     </Link>
                     <Link
-                        href={'/#'}
+                        href={text.footer.contacts.telegram.href}
                     >
                         <span>
                             <Image 
                                 src={ iconTelegram }
                                 width={40}
                                 height={40}
+                                alt='icon telegram'
+                                title='write to telegram'
                             />
                         </span>
                     </Link>

@@ -27,7 +27,7 @@ export default function Home() {
     height: 70
   }
   const sizeIconsService = {
-    width: 140,
+    width: 160,
     height: 140
   }
   
@@ -127,6 +127,7 @@ export default function Home() {
                       src={icon}
                       width={sizeIconsService.width}
                       height={sizeIconsService.height}
+                      alt={`icon ${value.id}`}
                     />
                   </div>
                   <p className={styles.descService}>
@@ -141,6 +142,9 @@ export default function Home() {
 
   return(
     <>
+      <Head>
+        <title>{text.head.title.main}</title>
+      </Head>
       <Banner />
       <div className={styles.services}>
           <div className={styles.servicesText}>
@@ -190,6 +194,7 @@ export default function Home() {
                         src={iconWebSite}
                         width={sizeIconsTech.width}
                         height={sizeIconsTech.height}
+                        alt='icon web-site'
                       />
                   </div>
                 </div>
@@ -209,6 +214,7 @@ export default function Home() {
                         src={iconWebApp}
                         width={sizeIconsTech.width}
                         height={sizeIconsTech.height}
+                        alt='icon web app'
                       />
                   </div>
                 </div>
@@ -231,6 +237,7 @@ export default function Home() {
                         src={iconMobileApp}
                         width={sizeIconsTech.width}
                         height={sizeIconsTech.height}
+                        alt='icon mobile app'
                       />
                   </div>
                 </div>
@@ -249,6 +256,7 @@ export default function Home() {
                         src={iconDesktopApp}
                         width={sizeIconsTech.width}
                         height={sizeIconsTech.height}
+                        alt='icon desktop app'
                       />
                   </div>
                 </div>

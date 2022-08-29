@@ -1,4 +1,18 @@
 export const textRU = {
+    head: {
+        meta: {
+            og: {
+                site_name: 'Веб-Разработка Unigi',
+                description: 'Разработка веб-инструмента для улучшения продуктиваности вашего бизнеса.',
+            },
+            description: 'Разработка веб-инструмента для улучшения продуктивности вашего бизнеса.'
+        },
+        title: {
+            main: 'Веб-Разработка unigi | Разработка веб-сайтов и сложных веб приложений',
+            about: 'О нас',
+            service: 'Услуги'
+        }
+    },
     header: {
         menu: [
             { link: '/about', text: 'О нас' },
@@ -7,10 +21,18 @@ export const textRU = {
                 { id: 'internet-shop', link: '/service/internet-shop', text: 'Интернет-Магазин' },
                 { id: 'web-app', link: '/service/web-app', text: 'Веб-Приложение' }
             ]},
-            { link: '/contacts', text: 'Контакты' }
+            // { link: '/contacts', text: 'Контакты' }
         ],
         btnContact: {
             text: 'Связаться'
+        },
+        contacts: {
+            email: {
+                href: 'admin@unigi.ru'
+            },
+            telegram: {
+                href: 'https://t.me/ALIWONKI'
+            }
         }
     },
     banner: {
@@ -122,11 +144,11 @@ export const textRU = {
         contacts: {
             caption: 'Контакты',
             email: {
-                href: '/',
-                text: 'super@mail.com'
+                href: 'admin@unigi.ru',
+                text: 'admin@unigi.ru'
             },
             telegram: {
-                href: '/'
+                href: 'https://t.me/ALIWONKI'
             }
         }
     }
@@ -134,6 +156,20 @@ export const textRU = {
 
 
 export const textEN = {
+    head: {
+        meta: {
+            og: {
+                site_name: 'Web Development Unigi',
+                description: 'Development of a web tool to improve the productivity of your business.',
+            },
+            description: 'Development of a web tool to improve the productivity of your business.'
+        },
+        title: {
+            main: 'Web development unigi | Development of websites and complex web applications',
+            about: 'About',
+            service: 'Service'
+        }
+    },
     header: {
         menu: [
             { link: '/about', text: 'About' },
@@ -142,10 +178,18 @@ export const textEN = {
                 { id: 'internet-shop', link: '/service/internet-shop', text: 'Internet-Shop' },
                 { id: 'web-app', link: '/service/web-app', text: 'Web-App' }
             ]},
-            { link: '/contacts', text: 'Contacts' }
+            // { link: '/contacts', text: 'Contacts' }
         ],
         btnContact: {
             text: 'Contact'
+        },
+        contacts: {
+            email: {
+                href: 'admin@unigi.ru'
+            },
+            telegram: {
+                href: 'https://t.me/ALIWONKI'
+            }
         }
     },
     banner: {
@@ -257,11 +301,11 @@ export const textEN = {
         contacts: {
             caption: 'Contacts',
             email: {
-                href: '',
-                text: 'super@mail.com'
+                href: 'admin@unigi.ru',
+                text: 'admin@unigi.ru'
             },
             telegram: {
-                href: ''
+                href: 'https://t.me/ALIWONKI'
             }
         }
     }

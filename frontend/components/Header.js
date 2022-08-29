@@ -198,13 +198,14 @@ export default function Header() {
                     key={index}
                     id={nameIcon[index]}
                     style={{
-                        opacity: 0
+                        opacity: 0,
                     }}      
                 >
                     <Image 
                         src={value}
                         width={120}
                         height={120}
+                        alt={`icon ${nameIcon[index]}`}
                     />
                 </div>
             )
@@ -314,7 +315,7 @@ export default function Header() {
                     <div className={ styles.footer }>
                         <div className={ styles.info }>
                             <Link 
-                                href='#'
+                                href={text.header.contacts.telegram.href}
                             >
                                 <div className={ styles.telegram }>
                                     <Image 
@@ -322,12 +323,12 @@ export default function Header() {
                                         width={ 40 }
                                         height={ 40 }
                                         alt='icon telegram'
-                                        title='icon telegram'
+                                        title='write to telegram'
                                     />
                                 </div>
                             </Link>
                             <Link 
-                                href='#'
+                                href={'mailto:' + text.header.contacts.email.href}
                             >
                                 <div className={ styles.email }>
                                     <Image 
@@ -335,7 +336,7 @@ export default function Header() {
                                         width={ 40 }
                                         height={ 40 }
                                         alt='icon email'
-                                        title='icon mail'
+                                        title='send email'
                                     />
                                 </div>
                             </Link>
