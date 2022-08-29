@@ -41,20 +41,22 @@ export default function Footer() {
                     {text.footer.contacts.caption}
                 </h3>
                 <div className={styles.listContacts}>
-                    {/* <Link 
-                        href={text.footer.contacts.email.href}
+                    <Link 
+                        href={'/#'}
                     >
                         {text.footer.contacts.email.text}
                     </Link>
                     <Link
-                        href={text.footer.contacts.telegram.href}
+                        href={'/#'}
                     >
-                        <Image 
-                            src={ iconTelegram }
-                            width={40}
-                            height={40}
-                        />
-                    </Link> */}
+                        <span>
+                            <Image 
+                                src={ iconTelegram }
+                                width={40}
+                                height={40}
+                            />
+                        </span>
+                    </Link>
                 </div>
             </div>
         </div>
