@@ -9,8 +9,8 @@ export const textRU = {
         },
         title: {
             main: 'Веб-Разработка unigi | Разработка веб-сайтов и сложных веб приложений',
-            about: 'О нас',
-            service: 'Услуги'
+            about: 'О нас | Unigi',
+            service: 'Услуги | Unigi'
         }
     },
     header: {
@@ -34,6 +34,26 @@ export const textRU = {
                 href: 'https://t.me/ALIWONKI'
             }
         }
+    },
+    formContact: {
+        inputItems: [
+            {
+                name: 'name',
+                text: 'Ваше имя',
+            },
+            {
+                name: 'email',
+                text: 'Ваш E-mail',
+            },
+            {
+                name: 'phone',
+                text: 'Ваш телефон',
+            },
+            {
+                name: 'comment',
+                text: 'Комментарий'
+            }
+        ]
     },
     banner: {
         caption: {
@@ -166,8 +186,8 @@ export const textEN = {
         },
         title: {
             main: 'Web development unigi | Development of websites and complex web applications',
-            about: 'About',
-            service: 'Service'
+            about: 'About Us | Unigi',
+            service: 'Service | Unigi'
         }
     },
     header: {
@@ -191,6 +211,26 @@ export const textEN = {
                 href: 'https://t.me/ALIWONKI'
             }
         }
+    },
+    formContact: {
+        inputItems: [
+            {
+                name: 'name',
+                text: 'Your name',
+            },
+            {
+                name: 'email',
+                text: 'Your E-Mail',
+            },
+            {
+                name: 'phone',
+                text: 'Your Phone',
+            },
+            {
+                name: 'comment',
+                text: 'Comment'
+            }
+        ]
     },
     banner: {
         caption: {

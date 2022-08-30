@@ -1,14 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import anime from "animejs";
+import stylesFormContact from '../../components/styles/FormContacts.module.sass';
 
 const menuSlice = createSlice({
     name: 'menu',
     initialState: {
         durationAnim: 120,
+        formFon: stylesFormContact.formFon,
+        logotypeInForm: stylesFormContact.logotype,
+        formContact: stylesFormContact.formContact,
         mobile: false,
         dropMenuOpen: false,
         activeBtn: false,
-        captionDropMenuStyle: ' ', 
+        captionDropMenuStyle: ' ',
+
     },
     reducers: {
         showDropMenu: (state, action) => {
@@ -75,7 +80,67 @@ const menuSlice = createSlice({
         },
         closeMobileMenu: state => {
             state.mobile = false;
-        }
+        },
+        openFormContact: (state) => {
+            const { formFon, logotypeInForm, formContact } = state;
+            anime({
+                targets: `.${formFon}`,
+                translateX: 0 + 'vw',
+                duration: 2000,
+                complete: () => {
+                    anime({
+                        targets: `.${formFon}`,
+                        clipPath: 'circle(90%)',
+                        duration: 2000,
+                    }),
+        
+                    setTimeout(() => {
+                        anime({
+                            targets: `.${logotypeInForm}`,
+                            translateY: -9 + 'vw',
+                            duration: 3000,
+                            delay: 0
+                        })
+                    }, 100);
+
+                    setTimeout(() => {
+                        anime({
+                            targets: `.${formContact}`,
+                            translateY: 0,
+                            opacity: 1,
+                            duration: 3000
+                        })
+                    }, 150);
+                }
+            })
+        },
+        closeFormContact: (state) => {
+            const { formFon, logotypeInForm, formContact } = state;
+            anime({
+                targets: `.${formContact}`,
+                translateY: 150 + 'px',
+                opacity: 0,
+                duration: 3000,
+            })
+            anime({
+                targets: `.${logotypeInForm}`,
+                translateY: 65,
+                duration: 3000,
+                delay: 1000,
+            })
+            anime({
+                targets: `.${formFon}`,
+                clipPath: 'circle(10% at 50% 50%)',
+                duration: 3000,
+                delay: 1300
+            })
+            anime({
+                targets: `.${formFon}`,
+                translateX: 100 + 'vw',
+                duration: 3000,
+                delay: 3000
+            })
+        },
     }
 });
 
@@ -85,6 +150,8 @@ export const {
     openMobileMenu, 
     closeMobileMenu,
     showIconDropMenu,
-    hideIconDropMenu
+    hideIconDropMenu,
+    openFormContact,
+    closeFormContact
 } = menuSlice.actions;
 export default menuSlice.reducer;

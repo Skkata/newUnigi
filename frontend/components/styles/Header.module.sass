@@ -18,7 +18,7 @@ $hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px 
     .logotype
         +flexCenter()
         width: calc( 100px - 10px )
-        font-size: 26px
+        font-size: 32px
         font-weight: 900
         outline: none
         user-select: none
@@ -272,6 +272,17 @@ $hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px 
                     font-size: 27px
                     margin-bottom: 20px
                     user-select: none
+            .btnContact
+                +flexCenter()
+                width: 120px
+                height: 40px
+                margin-top: -60px
+                border: 1px solid #388af3
+                border-radius: 10px
+                transition: .7s .9s
+                transform: translateY(0px)
+                font-weight: 900
+                text-transform: uppercase
             .footer
                 width: 100%
                 height: auto
@@ -301,6 +312,10 @@ $hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px 
                 transform: scale(0)
             .menu
                 transition: .7s .5s
+                opacity: 0
+                transform: translateY(-10px)
+            .btnContact
+                transition: .7s .6s
                 opacity: 0
                 transform: translateY(-10px)
             .footer

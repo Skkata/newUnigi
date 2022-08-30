@@ -9,9 +9,9 @@ import iconInternetShop from '../assets/icons/internet-shop.svg';
 import iconLending from '../assets/icons/lending.svg';
 import iconWebApp from '../assets/icons/web-app.svg';
 import iconArrowsLeft from '../assets/icons/arrowsLeft.svg';
-import iconTelegram from '../assets/icons/Telegram - Original.svg';
+import iconTelegram from '../assets/icons/TelegramOriginal.svg';
 import iconEmail from '../assets/icons/email.svg';
-import { hideDropMenu, hideIconDropMenu, showDropMenu, showIconDropMenu } from '../redux/reducers/HeaderSlice';
+import { hideDropMenu, hideIconDropMenu, openFormContact, showDropMenu, showIconDropMenu } from '../redux/reducers/HeaderSlice';
 
 export default function Header() {
     const lang = useSelector(state => state.language.value);
@@ -266,6 +266,11 @@ export default function Header() {
                     </div>
                     <div 
                         className={ styles.btnContact }
+                        onClick={() => {
+                            dispatch(
+                                openFormContact()
+                            )
+                        }}
                     >
                         <div className={ styles.btnContactIcon }>
                             <Image 
@@ -310,6 +315,17 @@ export default function Header() {
                     
                     <div className={ styles.menu }>
                         <MenuEl data={ text.header.menu }/>
+                    </div>
+
+                    <div 
+                        className={styles.btnContact}
+                        onClick={ () => {
+                            dispatch(
+                                openFormContact()
+                            )
+                        }}
+                    >
+                        {text.header.btnContact.text}
                     </div>
                     
                     <div className={ styles.footer }>

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import anime from 'animejs'
@@ -13,8 +14,8 @@ import iconDesktopApp from '../assets/icons/DesktopApp.svg';
 import iconLanding from '../assets/icons/lending.svg';
 import iconInternetShop from '../assets/icons/internet-shop.svg';
 import iconWeb from '../assets/icons/web-app.svg';
-import Link from 'next/link'
 import { animationHoverService, animationNoHoverService, hideServiceForDesktop, hideServiceForMobile, showServiceForDesktop, showServiceForMobile } from '../redux/reducers/mainSlice'
+import FormContacts from '../components/FormContacts.js'
 
 export default function Home() {
   const text = useSelector(state => state.language.text);
@@ -145,6 +146,7 @@ export default function Home() {
       <Head>
         <title>{text.head.title.main}</title>
       </Head>
+      <FormContacts />
       <Banner />
       <div className={styles.services}>
           <div className={styles.servicesText}>

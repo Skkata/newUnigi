@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import styles from './styles/Footer.module.sass';
-import iconTelegram from '../assets/icons/Telegram - Original.svg';
+import iconTelegram from '../assets/icons/TelegramOriginal.svg';
 
 export default function Footer() {
     const text = useSelector(state => state.language.text);
