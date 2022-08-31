@@ -97,7 +97,7 @@ const menuSlice = createSlice({
                     setTimeout(() => {
                         anime({
                             targets: `.${logotypeInForm}`,
-                            translateY: -9 + 'vw',
+                            translateY: -13 + 'vw',
                             duration: 3000,
                             delay: 0
                         })
@@ -126,7 +126,7 @@ const menuSlice = createSlice({
                 targets: `.${logotypeInForm}`,
                 translateY: 65,
                 duration: 3000,
-                delay: 1000,
+                delay: 500,
             })
             anime({
                 targets: `.${formFon}`,

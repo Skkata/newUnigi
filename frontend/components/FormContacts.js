@@ -20,8 +20,8 @@ function FormContacts() {
                     className={styles.inputItems}
                     key={index}
                 >
-                    <label>{value.text}</label>
-                    <input name={value.name} />
+                    <input type={value.type} required name={value.name} placeholder={value.placeholder}/>
+                    <span>{value.text}</span>
                 </div>
             )
         });
@@ -42,7 +42,7 @@ function FormContacts() {
                     )
                 }}
             >
-                Закрыть
+                {text.formContact.btnClose}
             </div>
             <div 
                 className={styles.logotype}
@@ -57,10 +57,11 @@ function FormContacts() {
                 }}
             >
                 <div className={styles.caption}>
-                    Свяжитесь с нами
+                    {text.formContact.caption}
                 </div>
                 <form>
                     <InputItems data={text.formContact.inputItems}/>
+                    <button>{text.formContact.btnSubmit}</button>
                 </form>
             </div>
         </div>

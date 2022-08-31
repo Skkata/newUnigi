@@ -36,22 +36,33 @@ export const textRU = {
         }
     },
     formContact: {
+        btnClose: 'Закрыть',
+        btnSubmit: 'Отправить',
+        caption: 'Свяжитесь с нами',
         inputItems: [
-            {
+            {  
+                type: 'text',
                 name: 'name',
                 text: 'Ваше имя',
+                placeholder: 'Антон'
             },
             {
+                type: 'email',
                 name: 'email',
                 text: 'Ваш E-mail',
+                placeholder: 'super@mail.com'
             },
             {
+                type: 'number',
                 name: 'phone',
                 text: 'Ваш телефон',
+                placeholder: '+7 ХХХ-ХХХ-ХХХХ'
             },
             {
+                type: 'text',
                 name: 'comment',
-                text: 'Комментарий'
+                text: 'Комментарий',
+                placeholder: 'Опишите ваш проект'
             }
         ]
     },
@@ -61,6 +72,7 @@ export const textRU = {
             words: [
                 'продуктивным',
                 'соврeменным',
+                'продвинутым'
             ]
         }
     },
@@ -213,22 +225,33 @@ export const textEN = {
         }
     },
     formContact: {
+        btnClose: 'Close',
+        btnSubmit: 'Send',
+        caption: 'Contact Us',
         inputItems: [
             {
+                type: 'text',
                 name: 'name',
                 text: 'Your name',
+                placeholder: 'Bob'
             },
             {
+                type: 'email',
                 name: 'email',
                 text: 'Your E-Mail',
+                placeholder: 'super@mail.com'
             },
             {
+                type: 'number',
                 name: 'phone',
                 text: 'Your Phone',
+                placeholder: '+1 ХХХ-ХХХ-ХХХХ'
             },
             {
+                type: 'text',
                 name: 'comment',
-                text: 'Comment'
+                text: 'Comment',
+                placeholder: 'Describe your project'
             }
         ]
     },
@@ -238,6 +261,7 @@ export const textEN = {
             words: [
                 'productive',
                 'modern',
+                'advenced'
             ]
         }
     },

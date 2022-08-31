@@ -23,25 +23,50 @@
         opacity: 0
         .caption
             margin-bottom: 40px
-            font-size: 2rem
+            font-size: 1.5rem
             font-weight: 700
+            text-align: center
         form
             +flexCol()
             .inputItems
                 +flexCol()
-                label
-                    position: absolute
-                    margin-top: 14px
-                    margin-left: 5px
-                    color: #ccc
-                    font-size: 1.5rem
-                    font-weight: 900
                 input
                     width: 100%
-                    height: 60px
+                    height: 50px
                     margin-bottom: 20px
                     padding-left: 5px
                     border: none
                     border-bottom: 1px solid #ccc
                     outline: none
-        // transform: translateY(70px)
+                    z-index: 1000
+                    background-color: #f0f8ff00
+                input::placeholder
+                    color: transparent
+                span
+                    position: absolute
+                    margin-top: 14px
+                    margin-left: 5px
+                    color: #ccc
+                    font-size: 1.2rem
+                    font-weight: 900
+                    transition: .6s
+                    user-select: none
+            .inputItems input:valid + span,        
+            .inputItems input:focus + span
+                    color: black
+                    transform: translateY(-25px)
+                    font-size: .8rem
+            .inputItems input:focus::placeholder
+                color: #bebebe
+            button
+                width: 200px
+                height: 40px
+                border-radius: 5px
+                border: none
+                margin-top: 20px
+                font-size: 1rem
+                font-weight:  600
+                color: white
+                background-color: #388af3
+                user-select: none
+                // border: 1px solid #388af3
