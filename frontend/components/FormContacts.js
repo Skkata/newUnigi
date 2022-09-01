@@ -15,6 +15,18 @@ function FormContacts() {
         const data = props.data;
 
         return data.map((value, index) => {
+
+            if(value.name === 'comment') {
+                return(
+                    <div
+                    className={styles.inputItems}
+                    key={index}
+                >
+                    <textarea type={value.type} required name={value.name} placeholder={value.placeholder}/>
+                    <span>{value.text}</span>
+                </div>
+                )
+            }
             return(
                 <div
                     className={styles.inputItems}
