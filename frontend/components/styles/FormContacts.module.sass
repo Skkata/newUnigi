@@ -76,15 +76,30 @@
                 color: #bebebe
             .inputItems textarea:focus::placeholder
                 color: #bebebe
-            button
-                width: 150px
-                height: 40px
-                border-radius: 5px
-                border: none
-                margin-top: 20px
-                font-size: 1rem
-                font-weight:  600
-                color: white
-                background-color: #388af3
-                user-select: none
-                // border: 1px solid #388af3
+            .btns
+                +flexCol()
+                button
+                    width: 150px
+                    height: 40px
+                    border-radius: 5px
+                    border: none
+                    margin-top: 20px
+                    font-size: 1rem
+                    font-weight:  600
+                    color: white
+                    background-color: #388af3
+                    user-select: none
+                    // border: 1px solid #388af3
+                .btnAgree
+                    +flexRow()
+                    align-items: center
+                    margin-top: 20px
+                    label
+                        color: #388af3
+                        text-decoration: underline
+                        font-size: .9rem
+                        margin-left: 5px
+                        user-select: none
+                    label:hover
+                        +cursorHand()
+                        text-decoration: none

@@ -279,6 +279,7 @@ export default function Header() {
                                 src={ iconArrowsLeft }
                                 width={34}
                                 height={34}
+                                alt="icon two arrows"
                             />
                         </div>
                         <p className={ styles.btnContactText }>

@@ -1,4 +1,5 @@
 import anime from 'animejs';
+import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeFormContact } from '../redux/reducers/HeaderSlice';
@@ -73,7 +74,25 @@ function FormContacts() {
                 </div>
                 <form>
                     <InputItems data={text.formContact.inputItems}/>
-                    <button>{text.formContact.btnSubmit}</button>
+                    <div className={styles.btns}>
+                        <button>{text.formContact.btnSubmit}</button>
+                        <div className={styles.btnAgree}>
+                            <input type='checkbox' id='agree' required/>
+                            <Link 
+                                href="/privacyPolicy"
+                            >
+                                <label 
+                                    htmlFor='agree'
+                                    onClick={ () => {
+                                        dispatch(
+                                            closeFormContact()   
+                                        )
+                                    }
+                                    }
+                                >{text.formContact.labelAgree}</label>
+                            </Link>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

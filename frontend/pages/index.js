@@ -146,7 +146,6 @@ export default function Home() {
       <Head>
         <title>{text.head.title.main}</title>
       </Head>
-      <FormContacts />
       <Banner />
       <div className={styles.services}>
           <div className={styles.servicesText}>

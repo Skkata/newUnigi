@@ -1,0 +1,38 @@
+@import '../../styles/_mixins'
+
+.privacyPolicy
+    +flexCol()
+    align-items: center
+    width: 100vw
+    height: auto
+    padding-top: 100px
+    background-color: white
+    .caption
+        width: 90%
+        text-align: center
+        font-size: 1.5rem
+    .listRules
+        +flexCol()
+        width: 80%
+        .rule
+            +flexRow()
+            margin-bottom: 10px
+            justify-content: space-between
+            h5
+                width: 20%
+                font-size: .9rem
+            p
+                width: 70%
+                font-size: 1.1rem
++mobile()
+    .privacyPolicy
+        .listRules
+            width: 80%
+            .rule
+                +flexCol()
+                h5
+                    width: 100%
+                    margin-bottom: 5px
+                    font-size: 1.1rem
+                p
+                    width: 100%
