@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export default function About() {
     const text = useSelector(state => state.language.text);
-
+    
     return (
         <>
             <Head>

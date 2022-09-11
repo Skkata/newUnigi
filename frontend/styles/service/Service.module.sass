@@ -1,0 +1,237 @@
+@import './styles/_mixins'
+
+$hoverColorText: #388af3
+$hoverTextShadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 15px #c8d9ee, 0 0 19px #7faeec, 0 0 30px #388af3cc, 0 0 40px #84b4f3, 0 0 55px #388af3, 0 0 75px #82b6f8
+
+.service
+    display: flex
+    align-items: center
+    flex-direction: column
+    padding-top: 90px
+    height: auto
+    width: 100vw
+    .caption
+        display: flex
+        justify-content: center
+        align-items: center
+        flex-direction: column
+        width: 100vw
+        height: 30vh
+        background-color: #22cc
+        .place
+            display: flex
+            justify-content: space-evenly
+            width: 40vw
+        
+    .services
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        align-content: space-around
+        justify-content: space-around
+        height: 190vh
+        width: 85vw 
+        .price
+            height: 85vh
+            width: 25vw
+            .start
+                font-size: 70px
+            .button
+                display: flex
+                justify-content: center
+                align-items: center
+                height: 10%
+                width: 80%
+                background-color: blue
+                border-radius: 100px
+                color: white
+            .button:hover
+                box-shadow: 22px 22px 35px 0px rgba(34, 60, 80, 0.50)
+            
+        .block
+            display: flex
+            flex-direction: column
+            justify-content: space-evenly
+            align-items: flex-start
+            padding: 50px
+            height: 85vh
+            width: 25vw
+            color: black
+            background: hsla(0, 71%, 99%, 1)
+            background: linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
+            background: -moz-linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
+            background: -webkit-linear-gradient(45deg, hsla(0, 71%, 99%, 1) 53%, hsla(214, 89%, 59%, 1) 53%)
+            .text
+            .description
+            .button
+
+        .help
+            display: flex
+            flex-direction: column
+            justify-content: space-around
+            height: auto
+            width: 25vw
+            font-size: 29px
+            .elem
+                height: 25.5px
+                width: 80%
+            input
+                display: flex
+                align-items: center
+                padding-left: 10px
+                height: 50px
+                width: 100%
+                border: none
+                border-bottom: 1px solid #2f2c2c
+                outline: none
+                background-color: #f7f9f900
+                color: #b7b8b8
+                font-size: 20px
+                z-index: 1000
+                margin-bottom: 20px
+            
+            textarea
+                height: 100px
+                margin-top: 10px
+                padding-top: 10px
+                padding-left: 10px
+                padding-right: 10px
+                border: 1px solid #ccc
+                border-radius: 10px
+                outline: none
+            input::placeholder
+                    color: transparent
+            textarea::placeholder
+                 color: transparent
+            span
+                position: absolute
+                transform: translateY(-55px)
+                margin-left: 11px
+                color: #ccc
+                font-size: 1.2rem
+                font-weight: 900
+                transition: .6s
+                user-select: none
+            .button
+                display: flex
+                align-items: center
+                justify-content: center
+                height: 50px
+                width: 170px
+                background-color: #22cc
+                color: #ffffff
+                border-radius: 100px
+                font-size: 20px
+            
+
+            .agreement
+                height: 36px
+                font-size: 15px 
+                margin-bottom: 150px
+        .help textarea:valid + span,        
+        .help textarea:focus + span
+                color: black
+                transform: translateY(-85px)
+                font-size: .8rem
+        .help input:valid + span,        
+        .help input:focus + span
+                color: black
+                transform: translateY(-85px)
+                font-size: .8rem
+        .help input:focus::placeholder
+            color: #bebebe
+        .help textarea:focus::placeholder
+            color: #bebebe
+            
+
+    .consultation
+        display: flex
+        flex-direction: row
+        width: 100vw
+        height: 45vh
+        background: linear-gradient(to top, #2639fa, #c9d1ff)
+        color: white
+        .img
+            width: 40%
+            height: 100%
+        .block
+            display: flex
+            flex-direction: column
+            justify-content: center
+            width: 60%
+            height: 100%
+            
+            .text
+                font-size: 40px
+            .general
+                display: flex
+                justify-content: space-around
+                width: 575px
+                height: 64px
+                input
+                    display: flex
+                    align-items: center
+                    height: 64px
+                    width: 190px
+                    background-color: #f7f9f9
+                    color: #b9baba
+                    border-radius: 50px 0 0 50px
+                    padding-left: 30px
+                input:active
+                    box-shadow: 22px 22px 35px 0px rgba(34, 60, 80, 0.50)
+                textarea
+                    height: 100px
+                    margin-top: 10px
+                    padding-top: 10px
+                    padding-left: 10px
+                    padding-right: 10px
+                    border: 1px solid #ccc
+                    border-radius: 10px
+                    outline: none
+                input::placeholder
+                    color: transparent
+                textarea::placeholder
+                    color: transparent
+                span
+                    position: absolute
+                    margin-bottom: 390px
+                    margin-left: 11px
+                    color: #ccc
+                    font-size: 1.2rem
+                    font-weight: 900
+                    transition: .6s
+                    user-select: none
+                .button
+                    display: flex
+                    align-items: center
+                    justify-content: center
+                    height: 64px
+                    width: 190px
+                    background-color: #2f2c2c
+                    color: white
+                    border-radius: 0px 50px 50px 0px
+            .general textarea:valid + span,        
+            .general textarea:focus + span
+                color: black
+                transform: translateY(-25px)
+                font-size: .8rem
+            .general input:valid + span,        
+            .general input:focus + span
+                color: black
+                transform: translateY(-25px)
+                font-size: .8rem
+            .general input:focus::placeholder
+                color: #bebebe
+            .general textarea:focus::placeholder
+                color: #bebebe
+                
+
+
+
+
+
+        
+                
+
+
+    
